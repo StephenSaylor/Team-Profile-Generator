@@ -3,8 +3,8 @@ const fs = require('fs')
 const { mainModule } = require('node:process')
 
 inquirer
-	.prompt([{
-	
+	.prompt([
+{
 		type: 'input',
 		message: 'Please enter member name',
 		name: 'name'
@@ -22,16 +22,27 @@ inquirer
 {
 		type: 'input',
 		message: 'Please enter member id number',
-		name: 'id-num'
+		name: 'id-num',
 },
 {
 		type: 'input',
 		message: 'Please enter member email',
-		name: 'email'
+		name: 'email',
 },
 {
 		type: 'input',
 		message: 'Please enter member github',
-		name: 'github'
+		name: 'github',
+},
+{	
+		type: 'input',
+		message: 'Please enter office number',
+		name: 'office',
+},
+{
+		type: 'input',
+		message: 'Please enter school',
+		name: 'school',
+
 }
 ])
