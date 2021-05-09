@@ -1,5 +1,6 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
+const { mainModule } = require('node:process')
 
 inquirer.prompt([{
 	type: 'input',
@@ -8,8 +9,12 @@ inquirer.prompt([{
 },
 {
 	type: 'input',
-	message: '',
-	name: ''
+	message: 'Please enter id',
+	name: 'identification'
+},
+{
+	type: 'input',
+	message: 'Please enter email',
+	name: 'email'
 }
-
 ])
