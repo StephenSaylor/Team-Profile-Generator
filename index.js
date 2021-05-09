@@ -9,8 +9,8 @@ inquirer.prompt([{
 },
 {
 	type: 'input',
-	message: 'Please enter id',
-	name: 'identification'
+	message: 'Please enter id number',
+	name: 'id-num'
 },
 {
 	type: 'input',
