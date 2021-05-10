@@ -5,22 +5,22 @@ const { mainModule } = require('node:process')
 function newMember() {
 	inquirer
 		.prompt([
-{
+	{
 		type: 'input',
 		message: 'Please enter member name',
 		name: 'name'
-},
-{
+	},
+	{
 		type: 'input',
 		message: 'Please enter member id number',
 		name: 'id-num',
-},
-{
+	},
+	{
 		type: 'input',
 		message: 'Please enter member email',
 		name: 'email',
-},
-{
+	},
+	{
 		type: 'list',
 		message: 'Please select team role',
 		name: 'role',
@@ -29,14 +29,14 @@ function newMember() {
 		'Engineer',
 		'Intern',
 	]
-}
-])
+	}
+	])
 	.then(function({name, role, id, email}) {
 		let rolePrompt = ''
-		if (role === 'Engineer') {
-			rolePrompt === 'github'
-		} else if (role === 'Manager') {
+		if (role === 'Manager') {
 			rolePrompt === 'office number'
+		} else if (role === 'Engineer') {
+			rolePrompt === 'github'
 		} else {
 			rolePrompt === 'school'
 		}
@@ -52,7 +52,9 @@ function newMember() {
 				name: 'addMore',
 				choices: [
 					'yes, please',
-					'no thanks'
+					'no thanks',
 				]
 			}
-	
+		])
+	})
+}
