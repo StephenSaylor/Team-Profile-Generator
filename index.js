@@ -34,7 +34,7 @@ function newMember() {
 	.then(function({name, role, id, email}) {
 		let rolePrompt = ''
 		if (role === 'Engineer') {
-			rolePrompt === 'member github'
+			rolePrompt === 'github'
 		} else if (role === 'Manager') {
 			rolePrompt === 'office number'
 		} else {
@@ -43,24 +43,16 @@ function newMember() {
 		inquirer.prompt([
 			{
 				type: 'input',
-				message: 'Please enter member github',
+				message: `Please enter member ${rolePrompt}`,
 				name: 'github',
 			},
-	// 		}])
-	// 	} else if (role === 'Intern') {
-	// 		inquirer.prompt([
-	// 			{
-	// 				type: 'input',
-	// 				message: 'Please enter school',
-	// 				name: 'school',
-	// 		}
-	// 	} else if (role === 'Manager') {
-	// 		inquirer.prompt([
-	// 			{	
-	// 				type: 'input',
-	// 				message: 'Please enter office number',
-	// 				name: 'office',
-	// 		},
-
-
-	// }
+			{
+				type: 'list',
+				message: 'Add more members?',
+				name: 'addMore',
+				choices: [
+					'yes, please',
+					'no thanks'
+				]
+			}
+	
