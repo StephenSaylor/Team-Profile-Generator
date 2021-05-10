@@ -10,16 +10,6 @@ inquirer
 		name: 'name'
 },
 {
-		type: 'list',
-		message: 'Please select team role',
-		name: 'role',
-		choices: [
-			'Manager',
-			'Engineer',
-			'Intern',
-		]
-},
-{
 		type: 'input',
 		message: 'Please enter member id number',
 		name: 'id-num',
@@ -28,6 +18,16 @@ inquirer
 		type: 'input',
 		message: 'Please enter member email',
 		name: 'email',
+},
+{
+		type: 'list',
+		message: 'Please select team role',
+		name: 'role',
+		choices: [
+		'Manager',
+		'Engineer',
+		'Intern',
+	]
 },
 {
 		type: 'input',
