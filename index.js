@@ -2,8 +2,9 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const { mainModule } = require('node:process')
 
-inquirer
-	.prompt([
+function newMember() {
+	inquirer
+		.prompt([
 {
 		type: 'input',
 		message: 'Please enter member name',
@@ -29,6 +30,17 @@ inquirer
 		'Intern',
 	]
 },
+	.then(function( {
+		
+		if (role === 'Engineer') {
+			
+		} else if (role === 'Intern') {
+
+		} else if (role === 'Manager') {
+
+		}
+
+	}
 {
 		type: 'input',
 		message: 'Please enter member github',
