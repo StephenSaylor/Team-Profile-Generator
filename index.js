@@ -29,32 +29,30 @@ function newMember() {
 		'Engineer',
 		'Intern',
 	]
-},
+])}
 	.then(function( {
-		
 		if (role === 'Engineer') {
-			
+			inquirer.prompt([
+				{
+					type: 'input',
+					message: 'Please enter member github',
+					name: 'github',
+			},
+			}])
 		} else if (role === 'Intern') {
-
+			inquirer.prompt([
+				{
+					type: 'input',
+					message: 'Please enter school',
+					name: 'school',
+			}
 		} else if (role === 'Manager') {
+			inquirer.prompt([
+				{	
+					type: 'input',
+					message: 'Please enter office number',
+					name: 'office',
+			},
 
-		}
 
 	}
-{
-		type: 'input',
-		message: 'Please enter member github',
-		name: 'github',
-},
-{	
-		type: 'input',
-		message: 'Please enter office number',
-		name: 'office',
-},
-{
-		type: 'input',
-		message: 'Please enter school',
-		name: 'school',
-
-}
-])
