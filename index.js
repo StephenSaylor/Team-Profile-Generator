@@ -7,11 +7,11 @@ const teamMembers = []
 
 function initApp() {
 	htmlTemplate()
-	newMember()
+	addMember()
 }
 	
 
-function newMember() {
+function addMember() {
 	inquirer
 		.prompt([
 	{
@@ -77,8 +77,8 @@ function newMember() {
 			teamMembers.push(newMember)
 			cardTemplates(newMember)
 			.then(function() {
-				if (addMore === 'yes') {
-					newMember()
+				if (addMore === 'yes please') {
+					addMember()
 				} else {
 					endHtml()
 				}
@@ -105,7 +105,9 @@ function htmlTemplate() {
 	
 		</header>
 		<div class="container">
-			<div class="row">`
+			<div class="row">
+			`
+			
 	fs.writeFile('teamprofile.html', html, 'utf8', function(err) {
         if (err) {
             console.log(err)
@@ -131,7 +133,8 @@ function cardTemplates(member) {
 					<li class="list-group-item">Office Number: ${offNum} </li>
 				</ul>
 			</div>
-		</div>`
+		</div>
+		`
 		} else if (role === 'Engineer') {
 			const github = member.getGithub()
 			cardData = `<div class="col-4">
@@ -143,7 +146,8 @@ function cardTemplates(member) {
                         <li class="list-group-item">GitHub: ${github} </li>
                     </ul>
                 </div>
-            </div>`
+            </div>
+			`
 		} else {
 			const school = member.getSchool()
 			cardData = ` <div class="col-4">
@@ -155,7 +159,8 @@ function cardTemplates(member) {
 					<li class="list-group-item">School: ${school} </li>
 				</ul>
 			</div>
-		</div>`
+		</div>
+		`
 		}
 		fs.appendFile('teamprofile.html', cardData, 'utf8', function (err) {
             if (err) {
