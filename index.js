@@ -3,6 +3,7 @@ const fs = require('fs')
 const Manager = require('./manager')
 const Engineer = require('./engineer')
 const Intern = require('./intern')
+const teamMembers = []
 
 function initApp() {
 	htmlTemplate()
@@ -48,31 +49,41 @@ function newMember() {
 		} else {
 			rolePrompt === 'school'
 		}
-		inquirer.prompt([
-			{
-				type: 'input',
-				message: `Please enter member ${rolePrompt}`,
-				name: 'github',
-			},
-			{
-				type: 'list',
-				message: 'Add more members?',
-				name: 'addMore',
-				choices: [
-					'yes, please',
-					'no thanks',
-				]
-			}
-		])
+		inquirer
+			.prompt([
+				{
+					type: 'input',
+					message: `Please enter member ${rolePrompt}`,
+					name: 'github',
+				},
+				{
+					type: 'list',
+					message: 'Add more members?',
+					name: 'addMore',
+					choices: [
+						'yes, please',
+						'no thanks',
+					]
+				}
+			])
 		.then(function({rolePrompt, addMore}) {
 			let newMember;
 			if (role === 'Manager') {
-				newMember = new Manager
+				newMember = new Manager(name, id, email, rolePrompt)
 			} else if (role === 'Engineer') {
-				newMember = new Engineer
+				newMember = new Engineer(name, id, email, rolePrompt)
 			} else {
-				newMember = new Intern
+				newMember = new Intern(name, id, email, rolePrompt)
 			}
+			teamMembers.push(newMember)
+			cardTemplates(newMember)
+			.then(function() {
+				if (addMore === 'yes') {
+					newMember()
+				} else {
+					endHtml()
+				}
+			})
 
 		}
 		)
@@ -144,12 +155,22 @@ function cardTemplates(member) {
 				</ul>
 			</div>
 		</div>`
+		}
 		fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
 		err ? console.log(err) : console.log('Success!')
 		)}
-	
-	}
+	)}
+		
+function endHtml() {
+	const html = `</div>
+    </div>
+</body>
+</html>`
+fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
+		err ? console.log(err) : console.log('Success!')
+		)
 }
+
 
 
 initApp()
