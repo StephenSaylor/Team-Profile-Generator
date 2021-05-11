@@ -156,18 +156,21 @@ function cardTemplates(member) {
 			</div>
 		</div>`
 		}
-		fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
-		err ? console.log(err) : console.log('Success!')
-		)}
-	)}
-		
+		fs.appendFile('teamprofile.html', cardData, 'utf8', function (err) {
+            if (err) {
+                return reject(err);
+            };
+            return resolve()
+		})
+	})
+}		
 function endHtml() {
-	const html = `</div>
+	const endHtml = `</div>
     </div>
 </body>
 </html>`
-fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
-		err ? console.log(err) : console.log('Success!')
+fs.appendFile('teamprofile.html', endHtml, 'utf8', (err) =>
+		err ? console.log(err) : console.log('Finish')
 		)
 }
 
