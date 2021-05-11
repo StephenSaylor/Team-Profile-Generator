@@ -3,7 +3,12 @@ const fs = require('fs')
 const Manager = require('./manager')
 const Engineer = require('./engineer')
 const Intern = require('./intern')
-const { mainModule } = require('node:process')
+
+function initApp() {
+	htmlTemplate()
+	newMember()
+}
+	
 
 function newMember() {
 	inquirer
@@ -102,10 +107,10 @@ function cardTemplates(member) {
 		const id = member.getId()
 		const email = member.getEmail()
 		const role = member.getRole()
-		let data = ''
+		let cardData = ''
 		if (role === 'Manager') {
 			const offNum = member.getOffNum()
-			data = `<div class="col-4">
+			cardData = `<div class="col-4">
 			<div class="card">
 				<h class="card-header bg-primary text-light"><br />${name}<br />Manager</h5>
 				<ul class="list-group text-dark">
@@ -117,7 +122,7 @@ function cardTemplates(member) {
 		</div>`
 		} else if (role === 'Engineer') {
 			const github = member.getGithub()
-			data = `<div class="col-4">
+			cardData = `<div class="col-4">
                 <div class="card">
                     <h class="card-header bg-primary text-light"><br />${name}<br />Engineer</h5>
                     <ul class="list-group text-dark">
@@ -129,7 +134,7 @@ function cardTemplates(member) {
             </div>`
 		} else {
 			const school = member.getSchool()
-			data = ` <div class="col-4">
+			cardData = ` <div class="col-4">
 			<div class="card">
 				<h class="card-header bg-primary text-light"><br />${name}<br />Intern</h5>
 				<ul class="list-group text-dark">
@@ -142,7 +147,9 @@ function cardTemplates(member) {
 		fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
 		err ? console.log(err) : console.log('Success!')
 		)}
-	)
-		}
+	
 	}
 }
+
+
+initApp()
