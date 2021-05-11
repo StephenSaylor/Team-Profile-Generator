@@ -56,5 +56,17 @@ function newMember() {
 				]
 			}
 		])
+		.then(function({rolePrompt, addMore}) {
+			let newMember;
+			if (role === 'Manager') {
+				newMember = 
+			} else if (role === 'Engineer') {
+				newMember = 
+			} else {
+				newMember = 
+			}
+
+		}
+		)
 	})
 }
