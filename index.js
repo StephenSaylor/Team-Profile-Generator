@@ -62,11 +62,11 @@ function newMember() {
 		.then(function({rolePrompt, addMore}) {
 			let newMember;
 			if (role === 'Manager') {
-				newMember = 
+				newMember = new Manager
 			} else if (role === 'Engineer') {
-				newMember = 
+				newMember = new Engineer
 			} else {
-				newMember = 
+				newMember = new Intern
 			}
 
 		}
