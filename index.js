@@ -91,7 +91,7 @@ function htmlTemplate() {
 		</header>
 		<div class="container">
 			<div class="row">`
-	fs.writeFile('teamprofile.html', html, 'utf8' (err) =>
+	fs.writeFile('teamprofile.html', html, 'utf8', (err) =>
 	err ? console.log(err) : console.log('Success!')
 	)}
 
@@ -139,7 +139,10 @@ function cardTemplates(member) {
 				</ul>
 			</div>
 		</div>`
-		fs.appendFile('teamprofile.html')
+		fs.appendFile('teamprofile.html', html, 'utf8', (err) =>
+		err ? console.log(err) : console.log('Success!')
+		)}
+	)
 		}
 	}
 }
