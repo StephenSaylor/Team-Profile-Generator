@@ -52,7 +52,6 @@ function newMember() {
 		inquirer
 			.prompt([
 				{
-					type: 'input',
 					message: `Please enter member ${rolePrompt}`,
 					name: 'github',
 				},
@@ -61,13 +60,13 @@ function newMember() {
 					message: 'Add more members?',
 					name: 'addMore',
 					choices: [
-						'yes, please',
+						'yes please',
 						'no thanks',
 					]
 				}
 			])
 		.then(function({rolePrompt, addMore}) {
-			let newMember;
+			let newMember
 			if (role === 'Manager') {
 				newMember = new Manager(name, id, email, rolePrompt)
 			} else if (role === 'Engineer') {
@@ -107,10 +106,12 @@ function htmlTemplate() {
 		</header>
 		<div class="container">
 			<div class="row">`
-	fs.writeFile('teamprofile.html', html, 'utf8', (err) =>
-	err ? console.log(err) : console.log('Success!')
-	)}
-
+	fs.writeFile('teamprofile.html', html, 'utf8', function(err) {
+        if (err) {
+            console.log(err)
+        }
+    })
+}
 
 function cardTemplates(member) {
 	return new Promise(function(resolve, reject) {
@@ -123,7 +124,7 @@ function cardTemplates(member) {
 			const offNum = member.getOffNum()
 			cardData = `<div class="col-4">
 			<div class="card">
-				<h class="card-header bg-primary text-light"><br />${name}<br />Manager</h5>
+				<h class="card-header bg-primary text-light">${name}<br /><br />Manager</h5>
 				<ul class="list-group text-dark">
 					<li class="list-group-item">ID-NUM: ${id} </li>
 					<li class="list-group-item">Email: ${email} </li>
@@ -135,7 +136,7 @@ function cardTemplates(member) {
 			const github = member.getGithub()
 			cardData = `<div class="col-4">
                 <div class="card">
-                    <h class="card-header bg-primary text-light"><br />${name}<br />Engineer</h5>
+                    <h class="card-header bg-primary text-light">${name}<br /><br />Engineer</h5>
                     <ul class="list-group text-dark">
                         <li class="list-group-item">ID-NUM: ${id} </li>
                         <li class="list-group-item">Email: ${email} </li>
@@ -147,7 +148,7 @@ function cardTemplates(member) {
 			const school = member.getSchool()
 			cardData = ` <div class="col-4">
 			<div class="card">
-				<h class="card-header bg-primary text-light"><br />${name}<br />Intern</h5>
+				<h class="card-header bg-primary text-light">${name}<br /><br />Intern</h5>
 				<ul class="list-group text-dark">
 					<li class="list-group-item">ID-NUM: ${id} </li>
 					<li class="list-group-item">Email: ${email} </li>
@@ -158,22 +159,23 @@ function cardTemplates(member) {
 		}
 		fs.appendFile('teamprofile.html', cardData, 'utf8', function (err) {
             if (err) {
-                return reject(err);
-            };
+                return reject(err)
+            }
             return resolve()
 		})
 	})
 }		
+
 function endHtml() {
 	const endHtml = `</div>
     </div>
 </body>
 </html>`
-fs.appendFile('teamprofile.html', endHtml, 'utf8', (err) =>
-		err ? console.log(err) : console.log('Finish')
-		)
+	fs.appendFile('teamprofile.html', endHtml, 'utf8', function (err) {
+	if (err) {
+		console.log(err)
+	}
+	})
 }
-
-
 
 initApp()
