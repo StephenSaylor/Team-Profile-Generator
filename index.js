@@ -53,7 +53,7 @@ function newMember() {
 			.prompt([
 				{
 					message: `Please enter member ${rolePrompt}`,
-					name: 'github',
+					name: 'rolePrompt',
 				},
 				{
 					type: 'list',
