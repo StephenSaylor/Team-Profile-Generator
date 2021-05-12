@@ -13,7 +13,7 @@ This project creates a command-line application to run in Node that prompts the 
 -[Questions](#questions)
 
 ## Installation
-First install inquirer then type 'node index' to run the application
+First install inquirer (and jest for tests) then type 'node index' to run the application
 
 ## Usage
 To quickly create a team profile when prompted with questions about the team and it's members.
